@@ -2,6 +2,7 @@ package model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -18,7 +19,8 @@ public class RequestModel {
 	private BufferedWriter bufferWriter;
 
 	public RequestModel() {
-		fileName = "requests.data";
+		// Cross-platform: store in data/ directory
+		fileName = new File("data", "requests.data").getPath();
 		readerLine = null;
 		
 	}

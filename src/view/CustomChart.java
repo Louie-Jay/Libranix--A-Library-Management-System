@@ -52,7 +52,9 @@ public class CustomChart extends JPanel{
 		try {
 			buffImg = chart.createBufferedImage(480, 360);
 			
-			chartFile = new File(title+".png");
+			// Cross-platform: save chart images to data/ directory
+			new File("data").mkdirs();
+			chartFile = new File("data", title+".png");
 			ImageIO.write(buffImg, "png", chartFile);
 			
 			chartInput = new FileInputStream(chartFile);

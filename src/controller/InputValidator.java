@@ -169,7 +169,7 @@ public class InputValidator{
 			return false;
 		}
 
-		pattern = "[;'`%!*/<>:.\"|?*]";
+		pattern = "[;'`%!*/<>:\"|?*]";
 		pat = Pattern.compile(pattern);
 		mat = pat.matcher(paramStr);
 

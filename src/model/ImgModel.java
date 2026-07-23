@@ -23,8 +23,6 @@ public class ImgModel {
 	private JLabel viewLabel;
 	private Component parent;
 	private File inputFile;
-	private InputStream is;
-	private OutputStream os;
 	private String srcName = "";
 	
 	public ImgModel(JLabel prmParent, String name) {
@@ -32,12 +30,12 @@ public class ImgModel {
 		
 		this.viewLabel = prmParent;
 		this.parent = (JLabel) prmParent.getParent();
-		this.inputFile = new File("resource/"+name+".png");
+		this.inputFile = new File("resource", name+".png");
 		try {
 			if(inputFile.exists()) {
 				image = new ImageIcon(inputFile.getPath());
 			}else {
-				this.inputFile = new File("resource/error.png");
+				this.inputFile = new File("resource", "error.png");
 				image = new ImageIcon(inputFile.getPath());
 			}
 			
@@ -50,8 +48,11 @@ public class ImgModel {
 	
 	private void loadChooser() {
 		this.chooser = new JFileChooser();
-		this.filter = new FileNameExtensionFilter("Image files", ".jpg", ".svg", ".png");
+		// Extensions must NOT have a leading dot — that was the bug preventing images from appearing
+		this.filter = new FileNameExtensionFilter("Image files", "jpg", "jpeg", "png", "gif", "bmp");
 		this.chooser.setFileFilter(filter);
+		// Also allow "All Files" as a fallback
+		this.chooser.setAcceptAllFileFilterUsed(true);
 	}
 	
 	public String getImgName() {
@@ -59,18 +60,35 @@ public class ImgModel {
 	}
 	
 	public void setImg(String prmName) {
-		image = new ImageIcon("images/"+prmName+"");
-		scaledImg = (image.getImage()).getScaledInstance(460, 544, Image.SCALE_DEFAULT);
-		image = new ImageIcon(scaledImg);
+		File imgFile = new File("images", prmName);
+		if (!imgFile.exists()) {
+			System.out.println("Image not found: " + imgFile.getAbsolutePath());
+			imgFile = new File("resource/error.png");
+		}
+		image = new ImageIcon(imgFile.getAbsolutePath());
+		int w = image.getIconWidth();
+		int h = image.getIconHeight();
+		if (w > 0 && h > 0) {
+			scaledImg = image.getImage().getScaledInstance(460, 544, Image.SCALE_SMOOTH);
+			image = new ImageIcon(scaledImg);
+		}
 		viewLabel.setIcon(image);
 		srcName = prmName;
 	}
 	
 	public void setTransactImg(String prmName) {
-		image = new ImageIcon("images/"+prmName+"");
-		scaledImg = (image.getImage()).getScaledInstance(100, 119, Image.SCALE_DEFAULT);
-		image = new ImageIcon(scaledImg);
-		
+		File imgFile = new File("images", prmName);
+		if (!imgFile.exists()) {
+			System.out.println("Image not found: " + imgFile.getAbsolutePath());
+			imgFile = new File("resource/error(100px,119px).png");
+		}
+		image = new ImageIcon(imgFile.getAbsolutePath());
+		int w = image.getIconWidth();
+		int h = image.getIconHeight();
+		if (w > 0 && h > 0) {
+			scaledImg = image.getImage().getScaledInstance(100, 119, Image.SCALE_SMOOTH);
+			image = new ImageIcon(scaledImg);
+		}
 		viewLabel.setIcon(image);
 		srcName = prmName;
 	}
@@ -94,7 +112,8 @@ public class ImgModel {
 			this.inputFile = new File(srcPath);
 			srcName = inputFile.getName();
 			
-			this.copyImageFile(inputFile, (new File("images/"+srcName+"")));
+			File destFile = new File("images", srcName);
+			this.copyImageFile(inputFile, destFile);
 			this.setImg(srcName);
 		}else {
 			// causes performance drop when chooser is canceled
@@ -106,17 +125,31 @@ public class ImgModel {
 	
 	private void copyImageFile(File src, File dst) {
 		try {
-			is = new FileInputStream(src);
-			os = new FileOutputStream(dst);
-			byte[] buffer = new byte[250];
-			int length;
-			while ((length = is.read(buffer)) > 0) {
-				os.write(buffer, 0, length);
-			}
-			is.close();
-			os.close();
+			// Resolve canonical paths to detect if src and dst are the same file
+			String srcPath = src.getCanonicalPath();
+			String dstPath = dst.getCanonicalPath();
 			
+			if (srcPath.equals(dstPath)) {
+				System.out.println("Source and destination are the same file — skipping copy: " + srcPath);
+				return;
+			}
+			
+			// Ensure the images directory exists
+			dst.getParentFile().mkdirs();
+			
+			// Use try-with-resources for guaranteed cleanup
+			try (InputStream in = new FileInputStream(src);
+			     OutputStream out = new FileOutputStream(dst)) {
+				byte[] buffer = new byte[4096];
+				int length;
+				while ((length = in.read(buffer)) > 0) {
+					out.write(buffer, 0, length);
+				}
+				out.flush();
+			}
+			System.out.println("Image copied to: " + dst.getAbsolutePath());
 		} catch (Exception e) {
+			System.err.println("Failed to copy image: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}

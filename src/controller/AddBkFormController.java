@@ -71,7 +71,10 @@ public class AddBkFormController {
 		model = new AddBkFormModel();
 		
 		if(this.validate(paramComp)) {
-			model.toDatabase(inputs);
+			if (!model.toDatabase(inputs)) {
+				errorMsg = "Failed to save book to database.";
+				return false;
+			}
 		}else {
 			return false;
 		}

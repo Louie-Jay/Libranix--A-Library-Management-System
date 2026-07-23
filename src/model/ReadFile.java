@@ -10,10 +10,9 @@ public class ReadFile {
 	private File file;
 	
 	public ReadFile(String prmFileName) {
-		
-		fileName = "data//"+prmFileName;
-		file = new File(fileName);
-		
+		// Cross-platform: use File(parent, child) instead of hardcoded separators
+		file = new File("data", prmFileName);
+		fileName = file.getPath();
 	}
 	
 	public String readProperties() {

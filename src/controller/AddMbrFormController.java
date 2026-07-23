@@ -46,7 +46,10 @@ public class AddMbrFormController {
 		this.model = new AddMbrFormModel();
 		
 		if(this.validate(paramComp)) {
-			model.toDatabase(inputs);
+			if (!model.toDatabase(inputs)) {
+				errorMsg = "Failed to save member to database.";
+				return false;
+			}
 			return true;
 		}else {
 			return false;

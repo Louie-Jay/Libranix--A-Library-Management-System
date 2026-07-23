@@ -10,8 +10,8 @@ import java.util.List;
 public class DatabaseConnection {
 	
 	static final String user = "root";
-	static final String pass = "root";
-	static final String dbURL = "jdbc:mysql://localhost:3333/librarydatabase"; // port: 3333
+	static final String pass = "123456";
+	static final String dbURL = "jdbc:mysql://localhost:3306/librarydatabase"; // port: 3333
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;

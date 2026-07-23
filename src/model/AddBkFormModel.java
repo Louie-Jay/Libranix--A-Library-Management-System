@@ -32,8 +32,8 @@ public class AddBkFormModel {
 		db = new DatabaseConnection();
 		db.connectDatabase();
 		queries.add("INSERT INTO `librarydatabase`.`tbl_bookdetails` (`col_BookTitle`, `col_BookAuthor`, `col_BookWriter`, `col_BookPublisher`, `col_BookIsbn`, `col_BookType`, `col_BookImg`) VALUES ('"+inputs.get("Title")+"', '"+inputs.get("Author")+"', '"+inputs.get("Writer")+"', '"+inputs.get("Publisher")+"', '"+inputs.get("ISBN")+"', '"+inputs.get("Type")+"', '"+inputs.get("Img")+"')");
-		queries.add("INSERT INTO `librarydatabase`.`tbl_bookgenre` (`col_BookGenre`) VALUES ('"+inputs.get("Genre")+"')");
-		queries.add("INSERT INTO `librarydatabase`.`tbl_bookquantity` (`col_BookQuantity`) VALUES ('"+inputs.get("Quantity")+"')");
+		queries.add("INSERT INTO `librarydatabase`.`tbl_bookgenre` (`col_BookId`, `col_BookGenre`) VALUES (LAST_INSERT_ID(), '"+inputs.get("Genre")+"')");
+		queries.add("INSERT INTO `librarydatabase`.`tbl_bookquantity` (`col_BookId`, `col_BookQuantity`) VALUES (LAST_INSERT_ID(), '"+inputs.get("Quantity")+"')");
 		System.out.println(queries.toString());
 		if(db.executeMultiQuery(queries)) {
 			db.closeDatabase();

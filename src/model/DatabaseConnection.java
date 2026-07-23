@@ -8,15 +8,52 @@ import java.util.ArrayList;
 
 public class DatabaseConnection {
 	
-	static final String user = "root";
-	static final String pass = "1234";
-	static final String dbURL = "jdbc:mysql://localhost:3333/librarydatabase"; // port: 3333
+	// Cross-platform: credentials loaded from data/db.properties with sensible defaults
+	private static String user = "root";
+	private static String pass = "123456";
+	private static String dbURL = "jdbc:mysql://localhost:3306/librarydatabase?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+	private static boolean configLoaded = false;
+	
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
 	String sql = "";
 	
-	public DatabaseConnection() {}
+	public DatabaseConnection() {
+		loadConfig();
+	}
+	
+	/**
+	 * Load database configuration from data/db.properties.
+	 * Falls back to hardcoded defaults if the file is missing or unreadable.
+	 */
+	private static void loadConfig() {
+		if (configLoaded) return;
+		configLoaded = true;
+		
+		java.io.File configFile = new java.io.File("data", "db.properties");
+		if (!configFile.exists()) {
+			System.out.println("DB Config: data/db.properties not found, using defaults.");
+			return;
+		}
+		
+		try (java.io.FileInputStream fis = new java.io.FileInputStream(configFile)) {
+			java.util.Properties props = new java.util.Properties();
+			props.load(fis);
+			
+			String url = props.getProperty("db.url");
+			String usr = props.getProperty("db.user");
+			String pwd = props.getProperty("db.password");
+			
+			if (url != null && !url.trim().isEmpty()) dbURL = url.trim();
+			if (usr != null && !usr.trim().isEmpty()) user = usr.trim();
+			if (pwd != null && !pwd.trim().isEmpty()) pass = pwd.trim();
+			
+			System.out.println("DB Config: loaded from data/db.properties");
+		} catch (Exception e) {
+			System.out.println("DB Config: failed to read data/db.properties, using defaults. (" + e.getMessage() + ")");
+		}
+	}
 	
 	public void connectDatabase() {
 		try {
@@ -35,18 +72,16 @@ public class DatabaseConnection {
 	public boolean executeQuery() {
 		try {
 			this.stmt = conn.createStatement();
-			this.rs = stmt.executeQuery(sql);
-		} catch (SQLException e) {
-			try {
-				
-				this.stmt = conn.createStatement();
+			// Detect query type: use executeQuery for SELECT, executeUpdate for INSERT/UPDATE/DELETE
+			String trimmedSql = sql.trim().toUpperCase();
+			if (trimmedSql.startsWith("SELECT")) {
+				this.rs = stmt.executeQuery(sql);
+			} else {
 				stmt.executeUpdate(sql);
-				
-			} catch (SQLException e1) {
-				System.out.println("Query Execution failed. "+e1.getMessage());
-				return false;
 			}
-			
+		} catch (SQLException e) {
+			System.out.println("Query Execution failed. " + e.getMessage());
+			return false;
 		}
 		return true;
 	}

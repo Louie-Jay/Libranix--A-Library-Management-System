@@ -6,30 +6,30 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="src/lib/jfreechart-1.5.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/activation-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/commons-codec-1.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/commons-collections4-4.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/commons-compress-1.19.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/commons-math3-3.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/curvesapi-1.06.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/javax.mail-1.6.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/jaxb-api-2.3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/jaxb-core-2.3.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/jaxb-impl-2.3.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/log4j-1.2.17.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/poi-4.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/poi-examples-4.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/poi-excelant-4.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/poi-ooxml-4.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/poi-ooxml-schemas-4.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/poi-scratchpad-4.1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/SparseBitSet-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/twilio-7.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/twilio-7.0.0-jar-with-dependencies.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/xmlbeans-3.1.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Louie Jay/eclipse-workspace/Library Management System/mysql-connector-java-8.0.26.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/activation-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/commons-codec-1.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/commons-compress-1.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/commons-math3-3.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/curvesapi-1.06.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/javax.mail-1.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/jaxb-api-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/jaxb-core-2.3.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/jaxb-impl-2.3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/jfreechart-1.5.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/mysql-connector-java-8.0.26.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/poi-4.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/poi-examples-4.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/poi-excelant-4.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/poi-ooxml-4.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/poi-ooxml-schemas-4.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/poi-scratchpad-4.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/SparseBitSet-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/twilio-7.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/twilio-7.0.0-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="C:/Users/louie/Documents/Projects/Libranix--A-Library-Management-System/lib/xmlbeans-3.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

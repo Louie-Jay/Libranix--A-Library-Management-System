@@ -28,7 +28,7 @@ public class LoginModel {
 		this.initializeDatabase();
 		db = new DatabaseConnection();
 		db.connectDatabase();
-		db.setQuery("UPDATE `systemdatabase`.`tbl_accountlogin` SET `col_AccountPassword`='"+newPassword+"';");
+		db.setQuery("UPDATE `librarydatabase`.`tbl_accountlogin` SET `col_AccountPassword`='"+newPassword+"';");
 		db.executeQuery();
 		
 		return true;
@@ -118,7 +118,7 @@ public class LoginModel {
 	private void initializeDatabase() {
 		db = new DatabaseConnection();
 		db.connectDatabase();
-		db.setQuery("SELECT * FROM systemdatabase.tbl_accountlogin");
+		db.setQuery("SELECT * FROM librarydatabase.tbl_accountlogin");
 		db.executeQuery();
 	}
 	

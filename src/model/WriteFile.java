@@ -10,11 +10,11 @@ public class WriteFile {
 	private File file;
 	
 	public WriteFile(String prmFileName) {
-		
-		fileName = "data\\"+prmFileName;
+		// Cross-platform: use File(parent, child) instead of hardcoded backslashes
+		file = new File("data", prmFileName);
+		fileName = file.getPath();
 		
 		try {
-			file = new File(fileName);
 			if (file.createNewFile()) {
 				System.out.println("File created: " + file.getName());
 			} else {

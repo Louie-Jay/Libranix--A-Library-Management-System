@@ -16,9 +16,8 @@ public class FileDataModel {
 	private String[] arrayData;
 	
 	public FileDataModel(String file) {
-		
-		String programPath = (new File("").getAbsolutePath());
-		String path = programPath.concat("\\src\\props\\"+file);
+		// Cross-platform: use File constructor instead of hardcoded backslashes
+		String path = new File(new File("src", "props"), file).getPath();
 		
 		this.reader = this.setDataPath(path);
 		this.dataFile = new BufferedReader(reader);

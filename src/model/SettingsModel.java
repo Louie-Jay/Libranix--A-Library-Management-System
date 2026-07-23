@@ -110,7 +110,7 @@ public class SettingsModel {
 	
 	public boolean changePassword(char[] prmNewPassword){
 		db = new DatabaseConnection();
-		String query = "UPDATE `systemdatabase`.`tbl_accountlogin` SET `col_AccountPassword`='"+(String.valueOf(prmNewPassword))+"'";
+		String query = "UPDATE `librarydatabase`.`tbl_accountlogin` SET `col_AccountPassword`='"+(String.valueOf(prmNewPassword))+"'";
 		
 		try {
 			db.connectDatabase();
@@ -129,7 +129,7 @@ public class SettingsModel {
 		mailer = new MailAPI();
 		
 		db = new DatabaseConnection();
-		String query = "SELECT col_AccountEmail FROM `systemdatabase`.`tbl_accountlogin`;";
+		String query = "SELECT col_AccountEmail FROM `librarydatabase`.`tbl_accountlogin`;";
 		db.connectDatabase();
 		db.setQuery(query);
 		db.executeQuery();
@@ -165,7 +165,7 @@ public class SettingsModel {
 	
 	public char[] getPassword() {
 		db = new DatabaseConnection();
-		String query = "SELECT col_AccountPassword FROM `systemdatabase`.`tbl_accountlogin`;";
+		String query = "SELECT col_AccountPassword FROM `librarydatabase`.`tbl_accountlogin`;";
 		db.connectDatabase();
 		db.setQuery(query);
 		db.executeQuery();
@@ -203,7 +203,7 @@ public class SettingsModel {
 	
 	public boolean changeEmail(String prmEmailInput) {
 		db = new DatabaseConnection();
-		String query = "UPDATE `systemdatabase`.`tbl_accountlogin` SET `col_AccountEmail`='"+prmEmailInput+"'";
+		String query = "UPDATE `librarydatabase`.`tbl_accountlogin` SET `col_AccountEmail`='"+prmEmailInput+"'";
 		
 		try {
 			db.connectDatabase();
@@ -242,7 +242,7 @@ public class SettingsModel {
 	
 	public String getEmail() {
 		db = new DatabaseConnection();
-		String query = "SELECT col_AccountEmail FROM `systemdatabase`.`tbl_accountlogin`;";
+		String query = "SELECT col_AccountEmail FROM `librarydatabase`.`tbl_accountlogin`;";
 		String email = "Blank";
 		try {
 			db.connectDatabase();

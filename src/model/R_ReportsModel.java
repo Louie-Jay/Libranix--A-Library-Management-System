@@ -33,7 +33,9 @@ public class R_ReportsModel {
 		doc = new XWPFDocument();
 		rqstModel = new RequestModel();
 		
-		FileOutputStream out = new FileOutputStream(new File(prmFPath,"reports.docx"));
+		// Cross-platform: timestamped filename to avoid overwrites
+		String reportName = "reports_" + new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date()) + ".docx";
+		FileOutputStream out = new FileOutputStream(new File(prmFPath, reportName));
 		
 		this.loadHeader();
 		this.loadImageContentBody(prmPics);

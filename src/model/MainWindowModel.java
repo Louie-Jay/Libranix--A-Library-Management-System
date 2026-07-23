@@ -16,7 +16,7 @@ public class MainWindowModel {
 	
 	public char[] getPassword() {
 		db = new DatabaseConnection();
-		String query = "SELECT col_AccountPassword FROM `systemdatabase`.`tbl_accountlogin`;";
+		String query = "SELECT col_AccountPassword FROM `librarydatabase`.`tbl_accountlogin`;";
 		db.connectDatabase();
 		db.setQuery(query);
 		db.executeQuery();
