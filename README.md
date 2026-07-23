@@ -494,5 +494,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 **Built with ❤️ using Java Swing, MySQL, and MVC Architecture**
 
 [⬆ Back to Top](#libranix--library-management-system)
-
+ 
 </div>
